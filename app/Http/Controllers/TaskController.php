@@ -61,9 +61,9 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FormTaskRequest $request, Task $task)
+    public function destroy( Task $task)
     {
-        Task::create($request->validated());
+        $task->delete();
         return redirect('/')->with('success', 'Tâche destoryed avec succès !');
     }
 }
