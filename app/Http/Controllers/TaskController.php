@@ -16,32 +16,31 @@ class TaskController extends Controller
     public function index(Request $request)
     {
 
-        $Tasks = Task::with('project')->paginate(4);
         $Projects = Project::all();
 
+        $Tasks = Task::with('project')->paginate(4);
 
         if ($request->ajax()) {
             $query = Task::query();
-            $search = $request->get('searchTaskValue');
-            // $Filter = $request->get('selectProjrctValue');
-            $search = str_replace(' ', '%', $search);
+            $Search = $request->get('searchTaskValue');
+            $Filter = $request->get('selectProjrctValue');
+            $Search = str_replace(' ', '%', $Search);
 
-            // if ($search && $Filter !== 'Filtrer par projet') {
-            //     $query->where('name', 'like', '%' . $search . '%')->where('project_id', $Filter)->paginate(3);
-            // }
-
-            if (empty($search)) {
-              
+            // pagination
+            if (empty($Search) && $Filter === "Filtrer par projet") {
                 return view('Tasks.Search', compact('Tasks', 'Projects'));
             }
-            if ($search) {
-                $Tasks = $query->with('project')->where('name', 'like', '%' . $search . '%')->paginate(4);
+            // search
+            if ($Search) {
+                $Tasks = $query->with('project')->where('name', 'like', '%' . $Search . '%')->paginate(4);
+            }
+            // filter
+            if ($Filter !== "Filtrer par projet") {
+                $Tasks = $query->where('project_id', $Filter)->paginate(3);
             }
             return view('Tasks.Search', compact('Tasks', 'Projects'))->render();
-
         }
 
-      
         return view('Tasks.index', compact('Tasks', 'Projects'));
 
 
@@ -75,6 +74,13 @@ class TaskController extends Controller
         $Projects = Project::all();
 
         return view('Tasks.edit', compact('task', 'Projects'));
+    }
+
+    public function show(Task $task)
+    {
+        $Projects = Project::all();
+
+        return view('Tasks.show', compact('task', 'Projects'));
     }
 
     /**

@@ -87,6 +87,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 
+
+
+
     <script>
         $(document).ready(function() {
             function fetchData(page, searchTaskValue, selectProjrctValue) {
@@ -99,18 +102,18 @@
                         // console.log(data);
                     }
                 });
+                console.log(page);
                 console.log(searchTaskValue);
-                console.log(page);
-                console.log(page);
+                console.log(selectProjrctValue);
             }
 
             $('body').on('click', '.pagination a', function(e) {
 
                 e.preventDefault();
 
-                var page = $(this).attr('href').split('page=')[1];
-                var searchTaskValue = $('#search-input').val();
-                var selectProjrctValue = $('#filterSelectProjrctValue').val();
+                let page = $(this).attr('href').split('page=')[1];
+                let searchTaskValue = $('#search-input').val();
+                let selectProjrctValue = $('#filterSelectProjrctValue').val();
                 // console.log($(this).attr('href').split('page=')[1]);
                 // console.log($(this).attr('href'));
                 fetchData(page, searchTaskValue, selectProjrctValue);
@@ -118,17 +121,17 @@
             });
 
             $('body').on('keyup', '#search-input', function() {
-                var page = $('#page').val();
-                var searchTaskValue = $('#search-input').val();
-                var selectProjrctValue = $('#filterSelectProjrctValue').val();
+                let page = $('#page').val();
+                let searchTaskValue = $('#search-input').val();
+                let selectProjrctValue = $('#filterSelectProjrctValue').val();
 
                 fetchData(page, searchTaskValue, selectProjrctValue);
             });
 
             $('#filterSelectProjrctValue').on('change', function() {
-                var page = $('#page').val();
-                var searchTaskValue = $('#search-input').val();
-                var selectProjrctValue = $(this).val();
+                let page = $('#page').val();
+                let searchTaskValue = $('#search-input').val();
+                let selectProjrctValue = $(this).val();
                 fetchData(page, searchTaskValue, selectProjrctValue);
             });
 
