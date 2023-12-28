@@ -13,10 +13,38 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $Tasks = Task::with('project')->paginate(4);
-        return view('Tasks.index', compact('Tasks'));
+        $Projects = Project::all();
+
+
+        if ($request->ajax()) {
+            $query = Task::query();
+            $search = $request->get('searchTaskValue');
+            // $Filter = $request->get('selectProjrctValue');
+            $search = str_replace(' ', '%', $search);
+
+            // if ($search && $Filter !== 'Filtrer par projet') {
+            //     $query->where('name', 'like', '%' . $search . '%')->where('project_id', $Filter)->paginate(3);
+            // }
+
+            if (empty($search)) {
+              
+                return view('Tasks.Search', compact('Tasks', 'Projects'));
+            }
+            if ($search) {
+                $Tasks = $query->with('project')->where('name', 'like', '%' . $search . '%')->paginate(4);
+            }
+            return view('Tasks.Search', compact('Tasks', 'Projects'))->render();
+
+        }
+
+      
+        return view('Tasks.index', compact('Tasks', 'Projects'));
+
+
     }
 
     /**
@@ -54,6 +82,7 @@ class TaskController extends Controller
      */
     public function update(FormTaskRequest $request, Task $task)
     {
+        // dd($task);
         $task->update($request->validated());
         return redirect('/')->with('success', 'Tâche update avec succès !');
     }
@@ -61,9 +90,9 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( Task $task)
+    public function destroy(Task $task)
     {
         $task->delete();
-        return redirect('/')->with('success', 'Tâche destoryed avec succès !');
+        return redirect('/')->with('success', 'Tâche delete avec succès !');
     }
 }
