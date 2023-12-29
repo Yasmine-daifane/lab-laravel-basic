@@ -1,13 +1,13 @@
-# Live coding laravel crud basic
+# Lab laravel basic 
 
+## This repository features a basic Laravel project for project management, focusing on task management.
+### The Work that should be include:
 
-## Travail à faire
-
-- Créer le CRUD des tâches
-- Inclure la recherche en utilisant AJAX
-- Ajouter la pagination
-- Ajouter la base de données incluant la table des projets dans les seeders
-- adminLte
+- CRUD Operations for Tasks
+- Pagination
+- Search (AJAX) 
+- data base : have 2 tables task and project (seeders)
+- filtrer par projets
 
 
 <!-- ## Les Commands -->
