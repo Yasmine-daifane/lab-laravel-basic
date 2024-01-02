@@ -1,13 +1,14 @@
-# Lab laravel basic 
+# Lab Laravel Basique
 
-## This repository features a basic Laravel project for project management, focusing on task management.
-### The Work that should be include:
+## Ce dépôt présente un projet Laravel de base pour la gestion de projets, mettant l'accent sur la gestion des tâches.
+### Le travail à Fiare :
 
-- CRUD Operations for Tasks
+- Opérations CRUD pour les tâches
 - Pagination
-- Search (AJAX) 
-- data base : have 2 tables task and project (seeders)
-- filtrer par projets
+- Recherche (AJAX)
+- Base de données : comportant deux tables, tâches et projets (seeders)
+- Filtrage par projets
+
 
 
 <!-- ## Les Commands -->
