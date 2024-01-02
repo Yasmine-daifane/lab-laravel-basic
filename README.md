@@ -1,13 +1,14 @@
-# Live coding laravel crud basic
+# Lab Laravel Basique
 
+## Ce dépôt présente un projet Laravel de base pour la gestion de projets, mettant l'accent sur la gestion des tâches.
+### Le travail à Fiare :
 
-## Travail à faire
+- Opérations CRUD pour les tâches
+- Pagination
+- Recherche (AJAX)
+- Base de données : comportant deux tables, tâches et projets (seeders)
+- Filtrage par projets
 
-- Créer le CRUD des tâches
-- Inclure la recherche en utilisant AJAX
-- Ajouter la pagination
-- Ajouter la base de données incluant la table des projets dans les seeders
-- adminLte
 
 
 <!-- ## Les Commands -->
@@ -61,11 +62,15 @@ php artisan make:controller TaskController -r
 php artisan make:view Tasks.index
 php artisan make:view Tasks.create
 php artisan make:view Tasks.edit
-
+```
+## Views
+```bash
 php artisan make:view Layouts.Layout
 php artisan make:view Layouts.Footer
 php artisan make:view Layouts.Navbar
 php artisan make:view Layouts.Sidebar
 php artisan make:view Layouts.Error404
-
 ```
+
+## Livrable 
+[Presentation lab-crude-laravel-basic](https://docs.google.com/presentation/d/16O9Q0SP7jeOPpMSTtWhGdpNF_AXEBORxemt-UoJAIe0/edit?usp=sharing)
