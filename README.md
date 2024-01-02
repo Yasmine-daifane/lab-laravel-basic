@@ -70,3 +70,5 @@ php artisan make:view Layouts.Sidebar
 php artisan make:view Layouts.Error404
 
 ```
+## Livrable 
+[Presentation lab-crude-laravel-basic](https://docs.google.com/presentation/d/16O9Q0SP7jeOPpMSTtWhGdpNF_AXEBORxemt-UoJAIe0/edit?usp=sharing)
